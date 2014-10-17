@@ -1,0 +1,10 @@
+DirectoryIndex load.html
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^api/(.*)$ rpc.php?api=$1 [L,QSA]
+
+RewriteRule "^(.*/)?\.git/" - [F,L]
