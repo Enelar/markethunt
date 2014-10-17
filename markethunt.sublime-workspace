@@ -1,0 +1,721 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"bs3-b",
+				"bs3-breadcrumbs	bs3-breadcrumbs"
+			],
+			[
+				"Defer",
+				"DeferInit"
+			],
+			[
+				"call",
+				"call_user_method"
+			],
+			[
+				"func",
+				"func_name"
+			],
+			[
+				"phoxy_",
+				"phoxy_return_worker"
+			],
+			[
+				"row",
+				"row_array_to_obj"
+			],
+			[
+				"redi",
+				"redis_db"
+			],
+			[
+				"server",
+				"server_id"
+			],
+			[
+				"sub",
+				"subscribed"
+			],
+			[
+				"sever",
+				"server_id"
+			],
+			[
+				"strpos",
+				"stripos"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"co",
+				"compiled"
+			],
+			[
+				"exp",
+				"explode"
+			],
+			[
+				"prote",
+				"protected"
+			],
+			[
+				"add",
+				"addons"
+			],
+			[
+				"array_me",
+				"array_merge_recursive"
+			],
+			[
+				"array_",
+				"array_combine"
+			],
+			[
+				"fun",
+				"function_exists"
+			],
+			[
+				"digital",
+				"digital_bind"
+			],
+			[
+				"ym",
+				"ymid"
+			],
+			[
+				"array_re",
+				"array_recursive_extract"
+			],
+			[
+				"is_a",
+				"is_array"
+			],
+			[
+				"is_",
+				"is_numeric"
+			],
+			[
+				"is_A",
+				"is_array"
+			],
+			[
+				"remove",
+				"removeChild"
+			],
+			[
+				"active",
+				"active_id"
+			],
+			[
+				"arg",
+				"arguments"
+			],
+			[
+				"E",
+				"EntryPoint"
+			],
+			[
+				"url",
+				"url_hook"
+			],
+			[
+				"base",
+				"base_prefix"
+			],
+			[
+				"token",
+				"token_by_vkid"
+			],
+			[
+				"vkid_",
+				"vkid_or_token_optional"
+			],
+			[
+				"is_n",
+				"is_null"
+			],
+			[
+				"vk",
+				"vkid_or_token_optional"
+			],
+			[
+				"create",
+				"createElement"
+			],
+			[
+				"ex",
+				"exception_query"
+			],
+			[
+				"phoxy",
+				"phoxy_conf"
+			],
+			[
+				"creat",
+				"created_by"
+			],
+			[
+				"pro",
+				"property"
+			],
+			[
+				"prop",
+				"property"
+			],
+			[
+				"Upda",
+				"UpdatePrices"
+			],
+			[
+				"Opt",
+				"OptOutFeedback"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"star",
+				"start_time"
+			],
+			[
+				"curda",
+				"cur_day"
+			],
+			[
+				"sc",
+				"scladless"
+			],
+			[
+				"pri",
+				"price"
+			],
+			[
+				"se",
+				"server_output"
+			],
+			[
+				"UL",
+				"ULLevel"
+			],
+			[
+				"st",
+				"start_level"
+			],
+			[
+				"li",
+				"li_level"
+			],
+			[
+				"dru",
+				"drug_id"
+			],
+			[
+				"debu",
+				"debug_print_backtrace"
+			],
+			[
+				"quan",
+				"quantity_bill"
+			],
+			[
+				"en",
+				"encoded_data"
+			],
+			[
+				"pat",
+				"patient_id"
+			],
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"Pa",
+				"PatchDoctorRoom"
+			],
+			[
+				"ar",
+				"arguments"
+			],
+			[
+				"ch",
+				"check_interval"
+			],
+			[
+				"Send",
+				"SendOneMail"
+			],
+			[
+				"send",
+				"send_tasks"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/I/core/settings.php",
+		"/I/api/auth/vk.php",
+		"/S/api/ym/digital/updateprice.php",
+		"/S/api/ym/sentinel/watch.php",
+		"/I/css/vk.css",
+		"/I/migrate/design/auth/vk/index.ejs",
+		"/I/css/MCTop.css",
+		"/I/phoxy_ajax.php",
+		"/I/settings.yaml",
+		"/I/api/Users.php",
+		"/I/api/auth/email.php",
+		"/I/migrate/design/auth/store_account.ejs",
+		"/I/migrate/design/auth/register_page.ejs",
+		"/I/migrate/design/social/user/login_page.ejs",
+		"/I/migrate/design/auth/index.ejs",
+		"/I/migrate/design/auth/email/logform.ejs",
+		"/I/migrate/design/auth/email/regform.ejs",
+		"/I/migrate/design/auth/email/index.ejs",
+		"/I/core/libs/phoxy/api.php",
+		"/I/migrate/design/social/user/register_page.ejs",
+		"/M/migrate/design/rating/server/vote_info.ejs",
+		"/M/phoxy_ajax.php",
+		"/M/migrate/design/main/utils/breadcrumbs.ejs",
+		"/M/migrate/design/main/index.ejs",
+		"/M/api/Main.php",
+		"/M/migrate/js/main/breadcrumbs.js",
+		"/M/phoxy_start.html",
+		"/M/migrate/js/main/url-hook.js",
+		"/M/core/libs/phoxy/phoxy.js",
+		"/M/core/settings.php",
+		"/M/settings.yaml",
+		"/M/.htaccess",
+		"/M/migrate/design/main/utils/breadcrumbs/crumbs.ejs",
+		"/M/migrate/design/main/utils/breadcrumbs_des.ejs",
+		"/M/core/libs/phoxy/phoxy_return_worker.php",
+		"/M/core/libs/phoxy/index.php",
+		"/M/core/libs/phoxy/config.php",
+		"/M/core/libs/phoxy/api.php",
+		"/M/migrate/php/pg_wrap.php",
+		"/M/migrate/php/core.php",
+		"/M/migrate/mctop.sublime-project",
+		"/C/doc/c/Enelar/Documents/inyo.sql",
+		"/C/Users/enela_000/Desktop/дистрибутив/log.txt",
+		"/C/Users/enela_000/Desktop/users.txt",
+		"/M/core/libs/phpsql/proxy.php",
+		"/M/core/libs/phpsql/pgsql.php",
+		"/M/migrate/php/db_failure.php",
+		"/M/api/Votes.php",
+		"/M/api/Servers.php",
+		"/M/api/RatingServers.php",
+		"/M/db/Servers.php",
+		"/M/api/Users.php",
+		"/M/core/core.php",
+		"/M/core/libs/phoxy/include.php",
+		"/M/migrate/design/main/pages/faq.ejs",
+		"/M/design/modules/main/footer.php",
+		"/M/api/v0/Achievements.php",
+		"/M/api/v0/Forum.php",
+		"/M/api/v0/Projects.php",
+		"/M/api/v0/Reputation.php",
+		"/M/api/v0/Servers.php",
+		"/M/api/v0/Site_polls.php",
+		"/M/api/Analytics/PageViews.php",
+		"/M/api/main.php",
+		"/M/migrate/design/example/faq.ejs",
+		"/M/migrate/design/example/home_page.ejs",
+		"/M/migrate/js/url-hook.js",
+		"/M/migrate/js/segment.io.js",
+		"/M/core/libs/phoxy/rpc_string_parser.php",
+		"/M/migrate/design/main/head.ejs",
+		"/M/migrate/design/main/foot.ejs",
+		"/S/api/ym/prices/cp.php",
+		"/C/documents/GitHub/MCTop/api/Banner.php",
+		"/C/documents/com/mctop/kickstart.sql",
+		"/D/com/digital812/pkonon_shop.sql",
+		"/C/documents/com/digital812/import_errors.txt",
+		"/S/api/ym/sentinel/tell.php",
+		"/C/documents/armorylog_20140923_0704.txt",
+		"/A/etc/bitcoin/doc/README_windows.txt",
+		"/S/phpsql/pgsql.php",
+		"/M/design/top/shop.php",
+		"/M/design/top/index.php",
+		"/M/css/main.css",
+		"/C/documents/com/digital812/offers.txt",
+		"/C/Users/enela_000/AppData/Local/Temp/7zO45ED.tmp/readme.txt",
+		"/S/ejs/catalog/vendor.ejs",
+		"/S/css/main.css",
+		"/S/ejs/catalog/better_menu.ejs",
+		"/S/googleit.js",
+		"/S/shot.php",
+		"/S/phoxy/libs/EJS/ejs.js",
+		"/S/api/main.php",
+		"/S/phoxy/phoxy.js",
+		"/S/js/main/loaded.js",
+		"/S/.htaccess",
+		"/S/load.html",
+		"/S/rpc.php",
+		"/S/js/url-hook.js",
+		"/S/ejs/menu/main.ejs",
+		"/S/ejs/main/body.ejs",
+		"/S/ejs/widgets/callus/entry.ejs",
+		"/S/ejs/pages/roadmap.ejs",
+		"/S/ejs/pages/contacts.ejs",
+		"/S/notfound.php",
+		"/M/design/servers/img.php",
+		"/M/design/servers/submit.php",
+		"/M/design/servers/admin.php",
+		"/M/api/Projects.php",
+		"/M/design/servers/create.php",
+		"/M/design/projects/submit.php",
+		"/M/api/integration/slack/acolyte.php",
+		"/M/api/Top.php",
+		"/M/design/top/row.php",
+		"/M/kickstart/sql_scheme.sql",
+		"/M/design/servers/index.php",
+		"/M/design/projects/create.php",
+		"/M/design/projects/admin.php",
+		"/M/design/projects/list.php",
+		"/M/design/servers/list.php",
+		"/M/index.php",
+		"/M/kickstart/tail.php",
+		"/M/design/auth/vk/auth.php",
+		"/M/design/vote/index.php",
+		"/M/design/vote/do.php",
+		"/M/design/auth/vk/index.php",
+		"/M/api/Utils/upload_image.php",
+		"/M/api/Users/Vk.php",
+		"/M/api/Users/conf.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"cliend",
+			"include",
+			"Scripts",
+			"new Object\\(.*\\n.*\\[",
+			"\\)\\n.*\\)",
+			"new Object\\(.*\\n.*\\[",
+			"new Object(",
+			"array(",
+			"base_prefix",
+			"$base_prefix",
+			"settings",
+			"LocationByName",
+			"AllocImageName",
+			"createGD",
+			"CheckExtension",
+			"\"\\[.*\\{(.*)\\}\\\"",
+			".*\"\\{.*\\n",
+			".*\"{",
+			"\\$offset",
+			"$offset",
+			"$server",
+			"default_addons",
+			"script",
+			"yandex",
+			"yandex-verification",
+			"MASQUERADE",
+			"curl",
+			"мфк",
+			");",
+			"при протезировании больных",
+			"при ортопедическом лечен",
+			"избирательное пришл",
+			"при травматической окк",
+			"веерообразного",
+			"угол бе",
+			"временные шины",
+			"для моделирования",
+			"для придан",
+			",",
+			"репин",
+			"поверхность",
+			"метод по",
+			"для получения функци",
+			"разделительная линия",
+			"просвечивание ",
+			"при заболевания",
+			"искусственных зубов",
+			"зуботе",
+			"разделитель",
+			",",
+			" ",
+			"Про",
+			".*-\\n",
+			".*есть\\n",
+			"Galaxy Note .*Pro",
+			"P5210",
+			"P5210.*Black",
+			"Note.*Neo",
+			"N7100",
+			"Galaxy S4.*VE",
+			"Galaxy S4 mini.*white",
+			"Moto.*E",
+			"D722",
+			"LG",
+			"D315",
+			"Ace",
+			"HTC.*Ace",
+			"Ace",
+			"Nexus",
+			"Nexus\n",
+			"Простой",
+			"body",
+			"<%= DeferRender",
+			">\n",
+			"BindPhoneInfo",
+			"/!#",
+			"/#",
+			"phoxy.hash",
+			"loaded",
+			"AJAX",
+			"ApiRequest",
+			"Digital812",
+			"Hash",
+			"button",
+			"$('head')",
+			"$\\('head'\\)",
+			"$('head')",
+			"login()",
+			"my_or_new_UID",
+			"keyframes",
+			"-key.*",
+			"-moz",
+			"callus",
+			",1\\) 0%",
+			"30,87,153",
+			"125,185,232",
+			"125,185,232,0",
+			"main/OptOut",
+			"main/optout",
+			"set_js_method_handler",
+			"MethodDispatcher",
+			"assert",
+			"Undefined api handler required",
+			"Undefined api",
+			"PopUp",
+			"Event",
+			" id.*?>",
+			" class.*?>",
+			"jquery.form",
+			"form",
+			"debugger",
+			"bootstrap",
+			"boostrap",
+			"(\\w\\w)(.*\\n)(.*\\1)(.*\\n)(?#\\3)(.*\\n)(?#\\3)(.*\\n)(?#\\3)(.*\\n)(?#\\3)",
+			"(\\w\\w)(.*\\n)(.*\\1)(?#(.*\\n)\\3){4}",
+			"(\\w\\w)(.*\\n)(.*\\1)((.*\\n)?#\\3){4}",
+			"(\\w\\w)(.*\\n)(.*\\1)((.*\\n)\\3){4}",
+			"(\\w\\w)(.*\\n)(.*\\1)((.*\\n)\\3){5}",
+			"(|\\w\\w)(.*\\n)+?\\1",
+			"(|\\w\\w)(.*\\n)+?",
+			"Create",
+			"hivrach",
+			"//'/",
+			"__context",
+			"Pro.*Unique",
+			"Unique.*Pro",
+			"(textarea )",
+			"textarea "
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"[",
+			"]",
+			"[",
+			"location_by_name",
+			"alloc_image_name",
+			"create_gd",
+			"check_extension",
+			"'{$1}'",
+			"'$1'",
+			"",
+			"$name",
+			"",
+			".",
+			"\\t",
+			"",
+			"animation",
+			"%s\", @prefix, @value",
+			",.7) 46%",
+			"175,243,236",
+			"0,0,0",
+			">",
+			"$5",
+			"$1$2$3$4$5$6$7$8$9",
+			"$1$2$3$4$5$6$7$8$9$10",
+			"$1$2$3$4$5$6$7$8$9$a",
+			"$1$2$3$4$5$6$7$8$9$10",
+			"$1$2$3$4{5}",
+			"$1",
+			"$2\\n",
+			"$2",
+			"$2\\n",
+			"$1",
+			"\\1",
+			"context",
+			"$1name=\"state_\" ",
+			"$1 name=\"state_\" ",
+			"$1 name=\"state_\"",
+			"",
+			"\\n  * ",
+			"Откат",
+			"/",
+			"$1\\$cd$2\\$",
+			"Откат",
+			"/",
+			"\\\\'",
+			"\\'",
+			"\\n$1",
+			"descr='$1\\'$2' WHERE",
+			"\\n$1",
+			"/",
+			"Откат",
+			" до \\$hpr$1\\$, с \\$hpr$2\\$\\.",
+			" до \\$hpr$1\\$, с \\$hpr$2\\$",
+			"Регенерация здоровья за 5 секунд была уменьшена",
+			"\\n",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"form.ejs",
+				"web_orig/operblock/ejs/login/form.ejs"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 270.0,
+	"status_bar_visible": true
+}
