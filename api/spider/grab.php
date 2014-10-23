@@ -2,7 +2,7 @@
 
 class grab extends api
 {
-  protected function DirectRequest($url)
+  private function DirectRequest($url)
   {
     $result = tempnam("/tmp", "spider_grab_");
 
@@ -31,8 +31,10 @@ class grab extends api
       return false;
     }
 
-    db::Query("INSERT INTO spider.page_cache(url, data, img, headers) VALUES ($1, $2, decode($3, 'base64'), $4)",
-      [$url, $obj['body'], $obj['shot'], json_encode($obj['headers'])]);
-    return true;
+    $res = db::Query("INSERT INTO spider.page_cache(url, data, img, headers) VALUES ($1, $2, decode($3, 'base64'), $4) RETURNING id",
+      [$url, $obj['body'], $obj['shot'], json_encode($obj['headers'])], true);
+    if (!$res)
+      return false;
+    return $res['id'];
   }
 }

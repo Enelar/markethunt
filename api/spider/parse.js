@@ -61,7 +61,9 @@ page.open(url, function (status)
         console.log(code);
         var res = page.evaluate(function(code)
           {
-            return eval(code);
+            var ret = null;
+            eval(code);
+            return ret;
           }, code);
         console.log(res);
         exportf(res);
