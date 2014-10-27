@@ -2,7 +2,7 @@
 
 class market extends api
 {
-  protected function Price($id)
+  public function Price($id)
   {
     $parse = LoadModule('api/spider', 'parse');
 
@@ -21,11 +21,12 @@ class market extends api
         {
           res.shops.push($(this).html());
         });
-      res.success = $('.b-model-tabs').size();
-      res.name = $('.b-page-title__title').children().remove().end().text();
+      res.success = $('.product-tabs').size();
+      res.name = $('.product-title h1').children().remove().end().text();
       ret = res;
 EOF;
 
-    return $parse->ExecuteAgainst($id, $code);
+    $ret = $parse->ExecuteAgainst($id, $code);
+    return $ret;
   }
 }

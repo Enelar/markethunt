@@ -11,7 +11,9 @@ file = system.args[2];
 code = system.args[3];
 
 var page = require('webpage').create();
-page.settings.resourceTimeout = 1500; // 15 seconds
+page.settings.loadImages = false;
+page.settings.localToRemoteUrlAccessEnabled = true;
+page.settings.resourceTimeout = 3000; // 15 seconds
 page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36';
 page.onResourceTimeout = function(e) {
   console.log('timeout');
@@ -33,7 +35,7 @@ var exportf = function(ret)
   phantom.exit();
 };
 
-var url = "http://localhost:8080/api/spider/phantomjs/Show" + id;
+var url = "http://localhost:8080/api/spider/phantomjs/Show?id=" + id;
 
 
 page.onResourceError = function(resourceError) {
@@ -53,7 +55,7 @@ page.open(url, function (status)
     phantom.exit();
   }
   else 
-  {
+  {     
     page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js", 
       function() 
       {
