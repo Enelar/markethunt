@@ -11,6 +11,10 @@ url = system.args[2];
 
 var page = require('webpage').create();
 page.settings.resourceTimeout = 1500; // 15 seconds
+page.viewportSize = {
+  width: 1366,
+  height: 768
+};
 page.settings.userAgent = 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.153 Safari/537.36';
 page.onResourceTimeout = function(e) {
   console.log('timeout');
