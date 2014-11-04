@@ -1,0 +1,12 @@
+<div class='to-head'>
+  <link rel="stylesheet" href="/css/foundation.css">
+  <script src="/js/vendor/modernizr.js"></script>
+</div>
+
+<%
+this.Defer(function()
+{
+  var element = this.first().detach();
+  $('head').append(element);
+})
+%>

@@ -13,17 +13,19 @@ phoxy =
   OnBeforeCompile: function()
   {
     phoxy.config['api_dir'] = '/' + phoxy.config['api_dir'];
+    phoxy.config['ejs_dir'] = '/' + phoxy.config['ejs_dir'];
+    phoxy.config['js_dir'] = '/' + phoxy.config['js_dir'];
   },
   OnAfterCompile: function()
   {
-    phoxy.Defer(function()
-    {
+    //phoxy.Defer(function()
+    //{
       phoxy.ChangeHash = function()
       {
         return false;
       }
       requirejs.config({baseUrl: phoxy.Config()['js_dir']});
-    }, 100);
+    //}, 100);
   },
   OnInitialClientCodeComplete: function()
   {

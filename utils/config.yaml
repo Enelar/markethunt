@@ -1,0 +1,3 @@
+auth:
+  vk:
+    redirect_uri: https://markethunt.ru/auth/vk/Auth

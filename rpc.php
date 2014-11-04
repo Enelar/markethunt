@@ -3,6 +3,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors','On');
 
+include_once('utils/config.php');
+
 include_once('phpsql/phpsql.php');
 include_once('phpsql/pgsql.php');
 $sql = new phpsql();

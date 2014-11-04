@@ -4,7 +4,11 @@ RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
 RewriteRule ^api/(.*)$ rpc.php?api=$1 [L,QSA]
+
+# This is not right. You should detect 404
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ hotstart.php?url=$1 [QSA]
 
 RedirectMatch 403 /\.git

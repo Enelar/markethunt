@@ -37,4 +37,12 @@ class grab extends api
       return false;
     return $res['id'];
   }
+
+  protected function TestGrabShowScreenshot()
+  {
+    $obj = $this->DirectRequest("http://market.yandex.ru/offers.xml?how=aprice&page=2&modelid=10495457");
+    if (!isset($obj['shot']))
+      die("Grab failed");
+    echo "<img src='data:image/png;base64,{$obj['shot']}' />";
+  }
 }
