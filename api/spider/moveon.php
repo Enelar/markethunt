@@ -16,6 +16,7 @@ class moveon extends api
       SET \"lock\"=now() 
       FROM one_row as b
       WHERE b.id=a.id
+      ORDER BY realtime DESC
       RETURNING *
       ", [], true);
     if (!$res)
@@ -23,9 +24,9 @@ class moveon extends api
     $grab = LoadModule('api/spider', 'grab');
     $ret = $grab->Request($res['url']);
 
-    db::Query("UPDATE spider.tasks SET procceed=now(), success=$2, lock=NULL WHERE id=$1", [$res['id'], !!$ret]);
+    $rt = db::Query("UPDATE spider.tasks SET procceed=now(), success=$2, lock=NULL WHERE id=$1 RETURNING realtime", [$res['id'], !!$ret]);
     if (!!$ret)
-      db::Query("INSERT INTO spider.parse_tasks(id) VALUES ($1)", [$ret]);
+      db::Query("INSERT INTO spider.parse_tasks(id, realtime) VALUES ($1)", [$ret, $rt->realtime]);
     return $ret;
   }
 }

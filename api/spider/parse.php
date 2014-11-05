@@ -11,6 +11,7 @@ class parse extends api
       ) DELETE FROM spider.parse_tasks
         USING one_row
         WHERE one_row.id=parse_tasks.id
+        ORDER BY realtime DESC
         RETURNING parse_tasks.id", [], true);
     $row = ["id"=>25, "url" => "http://market.yandex.ru/offers.xml?how=aprice&page=2&modelid=10495457"];
     if (!$row)
