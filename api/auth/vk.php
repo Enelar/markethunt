@@ -8,8 +8,7 @@ class vk extends api
     {
         return
         [
-            "design" => "auth/vk/index",
-            "data" => ["vk_url" => $this->make_url()]
+            "reset" => $this->make_url(),
         ];
     }
 
@@ -35,8 +34,8 @@ class vk extends api
 
         return
         [
-            "reset" => "/",
-            "data" => ["uid" => LoadModule('api', 'Users')->login($res['uid'])],
+            //"reset" => "/",
+            "data" => ["uid" => LoadModule('api', 'auth')->login($res['uid'])],
         ];
     }
 
@@ -46,12 +45,12 @@ class vk extends api
 
         //var_dump(phoxy_conf()['ip']);
         //if (phoxy_conf()['ip'] == '213.21.7.6')
-           // var_dump(Core::get_settings()->application->vk->client_id);
+           // var_dump(conf()->application->vk->client_id);
 
         $params =
         [
-            'client_id'     => Core::get_settings()->auth->vk->client_id,
-            'redirect_uri'  => Core::get_settings()->auth->vk->redirect_uri,
+            'client_id'     => conf()->auth->vk->client_id,
+            'redirect_uri'  => conf()->auth->vk->redirect_uri,
             'response_type' => 'code',
             'scope' => 'status,notify,email',
         ];
@@ -64,7 +63,7 @@ class vk extends api
         if ($this->my_token)
             return $this->my_token;
 
-        $vkid = $this->vkid_by_uid(C::Users()->uid());
+        $vkid = $this->vkid_by_uid(LoadModule('api', 'auth')->uid());
         if (!$vkid)
             throw new exception("Not registered with vk"); // Todo: redirect and autoauth vk
         return $this->my_token = $this->token_by_vkid($vkid);
@@ -74,9 +73,9 @@ class vk extends api
     {        
         $params = 
         [
-            'client_id' => Core::get_settings()->application->vk->client_id,
-            'client_secret' => Core::get_settings()->application->vk->client_secret,
-            'redirect_uri'  => Core::get_settings()->application->vk->redirect_uri,
+            'client_id' => conf()->auth->vk->client_id,
+            'client_secret' => conf()->auth->vk->client_secret,
+            'redirect_uri'  => conf()->auth->vk->redirect_uri,
             'code' => $code,
         ];
 
@@ -91,16 +90,16 @@ class vk extends api
         (
           function() use ($id)
           {
-            return db::Query("SELECT count(*) FROM main.\"users.vk\" WHERE vkid=$1", [$id], true)['count'];
+            return db::Query("SELECT count(*) FROM public.\"users.vk\" WHERE vkid=$1", [$id], true)['count'];
           },
           function () use ($id, $token, $expire)
           {
-            return db::Query("UPDATE main.\"users.vk\" SET token=$2, expires=now()+$3::interval WHERE vkid=$1 RETURNING uid",
+            return db::Query("UPDATE public.\"users.vk\" SET token=$2, expires=now()+$3::interval WHERE vkid=$1 RETURNING uid",
                 [$id, $token, $expire], true);
           },
           function () use ($id, $token, $expire)
           {
-            return db::Query("INSERT INTO main.\"users.vk\"(uid, vkid, token, expires) VALUES ($1, $2, $3, now()+$4::interval) RETURNING uid",
+            return db::Query("INSERT INTO public.\"users.vk\"(uid, vkid, token, expires) VALUES ($1, $2, $3, now()+$4::interval) RETURNING uid",
                 [LoadModule('api', 'auth')->do_oneclick_reg(), $id, $token, $expire], true);
           }
         );
@@ -115,13 +114,13 @@ class vk extends api
 
     public function vkid_by_uid( $uid )
     {
-        $res = Core::get_db()->Query("SELECT vkid FROM kickstart.\"users.vk\" WHERE uid=$1", [$uid], true);
+        $res = db::Query("SELECT vkid FROM public.\"users.vk\" WHERE uid=$1", [$uid], true);
         return $res['vkid'];
     }
 
     private function token_by_vkid( $vkid )
     {
-        $res = Core::get_db()->Query("SELECT token, (now() < expires) as fresh FROM kickstart.\"users.vk\" WHERE vkid=$1", [$vkid], true);
+        $res = db::Query("SELECT token, (now() < expires) as fresh FROM public.\"users.vk\" WHERE vkid=$1", [$vkid], true);
         if (!$res)
             return false;
         if ($res['fresh'])

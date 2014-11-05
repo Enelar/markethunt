@@ -2,19 +2,21 @@
 
 class auth extends api
 {
-  public function uid()
+  protected function uid()
   {
     phoxy_protected_assert($this->is_user_authorized(), ["error" => "Auth required"]);
     return $this->get_uid();
   }
 
-  public  function get_uid()
+  public  function get_uid($id = null)
   {
-    global $_session;
+    if (session_status() !== PHP_SESSION_ACTIVE)
+      session_start();
+    global $_SESSION;
 
-    if (isset($_SESSION['uid']))
-      return $_SESSION['uid'];
-    return false;
+    if(!is_null($id))
+      $_SESSION['uid'] = $id;
+    return $_SESSION['uid'];
   }
 
   public function is_user_authorized()
@@ -29,15 +31,7 @@ class auth extends api
 
   private function get_login($id = null)
   {
-    if (session_status() !== PHP_SESSION_ACTIVE)
-      session_start();
-    global $_SESSION;
-
-    //undefined index 'uid' без 43 и 44 строки, при подтверждении email
-
-    if(!is_null($id))
-      $_SESSION['uid'] = $id;
-    return $_SESSION['uid'];
+    return $this->get_uid($id);
   }
 
   protected function logout()
@@ -53,7 +47,7 @@ class auth extends api
   {
     if ($this->get_uid())
       return $this->get_uid();
-    $res = db::Query("INSERT INTO main.users DEFAULT VALUES RETURNING id", [], true);
+    $res = db::Query("INSERT INTO public.users DEFAULT VALUES RETURNING id", [], true);
     return $this->login($res->id);
   }
 

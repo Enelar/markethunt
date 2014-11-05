@@ -9,8 +9,10 @@ include_once('phpsql/phpsql.php');
 include_once('phpsql/pgsql.php');
 $sql = new phpsql();
 $pg = $sql->Connect("pgsql://postgres@localhost/markethunt");
+include_once('phpsql/wrapper.php');
+
 include_once('phpsql/db.php');
-db::Bind($pg);
+db::Bind(new phpsql\utils\wrapper($pg));
 
 function phoxy_conf()
 {
