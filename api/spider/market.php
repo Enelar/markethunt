@@ -37,18 +37,31 @@ EOF;
     $ret = $parse->ExecuteAgainst($id, $code);
 
     if ($ret['success'])
+    {
+      if (!isset($ret['ymid']))
+      {
+        $task = db::Query("SELECT * FROM spider.tasks WHERE id=(SELECT task FROM spider.page_cache WHERE id=$1)", [$id], true);
+        $ret['ymid'] = $this->ExtractYMIDFromLink($task->url);
+      }
+
       $this->AddParsedModel($id, $ret);
+      $this->StorePriceSlice($id, $ret);
+    }
     return $ret;
+  }
+
+  protected function StorePriceSlice($id, $ret)
+  {
+    $prices = [];
+    foreach ($ret['prices'] as $price)
+      $prices[] = (int)str_replace([" ", " "], "", $price);
+
+    db::Query("INSERT INTO market.price_cache(id, ymid, prices, shops) VALUES ($1, $2, $3::int2[], $4::varchar[])",
+      [$id, $ret['ymid'], $prices, $ret['shops']]);
   }
 
   private function AddParsedModel( $id, $ret )
   {
-    if (!isset($ret['ymid']))
-    {
-      $task = db::Query("SELECT * FROM spider.tasks WHERE id=(SELECT task FROM spider.page_cache WHERE id=$1)", [$id], true);
-      $ret['ymid'] = $this->ExtractYMIDFromLink($task->url);
-    }
-
     if ($this->IsModelKnown($ret['ymid']))
       return;
     db::Query("INSERT INTO market.models(ymid, name) VALUES ($1, $2)", [$ret['ymid'], $ret['name']]);
