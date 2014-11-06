@@ -7,14 +7,12 @@ class parse extends api
     $row = db::Query("
       WITH one_row AS
       (
-        SELECT * FROM spider.parse_tasks LIMIT 1
+        SELECT * FROM spider.parse_tasks ORDER BY realtime DESC LIMIT 1
       ) DELETE FROM spider.parse_tasks
         USING one_row
         WHERE one_row.id=parse_tasks.id
-        ORDER BY realtime DESC
         RETURNING parse_tasks.id", [], true);
-    $row = ["id"=>25, "url" => "http://market.yandex.ru/offers.xml?how=aprice&page=2&modelid=10495457"];
-    if (!$row)
+    if (!$row())
       return false;
     return $this->Milestone($row['id']);
   }
@@ -34,8 +32,9 @@ class parse extends api
     $res = $pjs->Execute("api/spider/parse.js", [$id, $result, $code]);
 
     $return = file_get_contents($result);
+    var_dump($return);
 
-    unlink($result);
+    //unlink($result);
     return json_decode($return, true);
   }
 }

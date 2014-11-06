@@ -95,7 +95,7 @@ function Exit()
   ret.body = page.content;
   ret.shot = page.renderBase64('PNG');
   for (var k in pageResponses)
-    ret.headers = pageResponses[k].headers;
+    ret.headers = {} || pageResponses[k].headers;
   ret.url = url;
 
   var fs = require('fs');

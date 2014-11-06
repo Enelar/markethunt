@@ -28,6 +28,22 @@ phantom.addCookie({
   'expires'  : (new Date()).getTime() + (1000 * 60 * 60)   /* <-- expires in 1 hour */
 });
 
+var export_flag = false;
+var result = null;
+function wait_for_flag()
+{
+  if (!export_flag)
+    return setTimeout(arguments.callee, 100);
+  exportf(result);
+}
+wait_for_flag();
+
+function set_flag(res)
+{
+  result = res;
+  export_flag = true;
+}
+
 var exportf = function(ret)
 {
   var fs = require('fs');
@@ -68,7 +84,7 @@ page.open(url, function (status)
             return ret;
           }, code);
         console.log(res);
-        exportf(res);
+        set_flag(res)
       });
   }
 });  
