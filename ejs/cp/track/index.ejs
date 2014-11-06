@@ -1,0 +1,16 @@
+<input type='text' placeholder='Введите ссылку на модель' />
+
+<%
+this.first(function()
+{
+  this.keypress(function(e)
+  {
+    if (e.which != 13)
+      return;
+    phoxy.ApiRequest('cp/track/add', [$(this).val()], function(res)
+    {
+      debugger;
+    })
+  })
+});
+%>
