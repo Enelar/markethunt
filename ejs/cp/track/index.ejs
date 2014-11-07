@@ -1,16 +1,29 @@
 <input type='text' placeholder='Введите ссылку на модель' />
+<span data-tooltip aria-haspopup="true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!">extended information</span>
 
 <%
+var input;
+function TriggerSend()
+{
+  phoxy.ApiRequest('cp/track/Add', [input.val()], function(res)
+  { // Todo: continious update
+    if (res.Add)
+      return phoxy.ApiAnswer({reset: true});
+    // Tooltip temporary
+    return phoxy.Defer(TriggerSend, 400);
+  });
+}
+
 this.first(function()
 {
+  input = this;
   this.keypress(function(e)
   {
     if (e.which != 13)
       return;
-    phoxy.ApiRequest('cp/track/add', [$(this).val()], function(res)
-    {
-      debugger;
-    })
+    TriggerSend.call(this);
   })
 });
 %>
+
+<%= this.DeferRender('cp/track/GetList') %>
