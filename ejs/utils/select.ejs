@@ -1,0 +1,27 @@
+<%
+var first_key = Object.keys(this.list)[0];
+%>
+
+<div class="ui selection dropdown">
+  <input name="<%@ this.name %>" type="hidden">
+  <div class="default text"><%@ this.list[first_key] %></div>
+  <i class="dropdown icon"></i>
+  <div class="menu">
+<%
+for (var k in this.list)
+{
+  var v = this.list[k];
+%>
+    <div class="item" data-value="<%@ k %>"><%@ v %></div>
+<%
+}
+%>
+  </div>
+</div>
+
+<%
+this.first(function()
+{
+  this.dropdown();
+})
+%>

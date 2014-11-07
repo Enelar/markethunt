@@ -1,0 +1,78 @@
+<table class='ui table'>
+  <tr>
+    <th>
+      Если позиция модели
+    </th>
+    <th>ниже</th>
+    <th>или</th>
+    <th>выше</th>
+    <th>то</th>
+    <th>
+      отправить письмо
+    </th>
+    <th>
+    </th>
+  </tr>
+<%
+var places_array = $.map($(Array(12)),function(val, i) { return i; });
+
+for (var k in this.list)
+{
+  var v = this.list[k];
+%>
+  <tr>
+    <td>
+      <%@ v.name %>
+      <a href='http://yandex.market.ru/model.xml?modelid=<%@ v.ymid %>'>
+        <i class="external url icon link"></i>
+      </a>
+    </td>
+    <td colspan='2'>
+      <%= 
+        this.DeferRender
+        (
+          'utils/select',
+          {
+            list: places_array, 
+            name: "name"
+          }
+        ) %>
+    </td>
+    <td colspan='2'>
+      <%= 
+        this.DeferRender
+        (
+          'utils/select',
+          {
+            list: places_array, 
+            name: "name"
+          }
+        ) %>
+    </td>
+    <td>
+      <%= 
+        this.DeferRender
+        (
+          'utils/select',
+          {
+            list: 
+            [
+              "Каждый час",
+              "4 раза в день",
+              "Дважды в день",
+              "Каждый день",
+              "Каждую неделю",
+            ], 
+            name: "name"
+          }
+        ) %>
+    </td>
+    <td>
+      <i class="circle icon"></i>
+      <i class="trash icon"></i>
+    </td>
+  </tr>
+<%
+}
+%>
+</table>

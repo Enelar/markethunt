@@ -28,4 +28,14 @@ class track extends api
       [LoadModule('api', 'auth')->uid(), $ymid], true);
     return $res();
   }
+
+  protected function GetList()
+  {
+    $res = db::Query("SELECT entity.*, name FROM track.entity, market.models WHERE entity.ymid=models.ymid");
+    return
+    [
+      "design" => "cp/track/list",
+      "data" => ["list" => $res]
+    ];
+  }
 }

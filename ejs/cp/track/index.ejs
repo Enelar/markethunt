@@ -1,5 +1,6 @@
-<input type='text' placeholder='Введите ссылку на модель' />
-<span data-tooltip aria-haspopup="true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!">extended information</span>
+<div class="ui input" style='width: 100%'>
+  <input type='text' placeholder='Введите ссылку на модель' />
+</div>
 
 <%
 var input;
@@ -16,14 +17,17 @@ function TriggerSend()
 
 this.first(function()
 {
-  input = this;
-  this.keypress(function(e)
+  input = this.find('input');
+  input.keypress(function(e)
   {
     if (e.which != 13)
       return;
-    TriggerSend.call(this);
+    TriggerSend();
   })
 });
 %>
 
+<div class="ui horizontal divider">
+  <i class="circular heart icon"></i>
+</div>
 <%= this.DeferRender('cp/track/GetList') %>
