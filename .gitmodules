@@ -4,3 +4,6 @@
 [submodule "phpsql"]
 	path = phpsql
 	url = https://github.com/Enelar/phpsql
+[submodule "ejs/snippets"]
+	path = ejs/snippets
+	url = https://github.com/Enelar/phoxy-snippets
