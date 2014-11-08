@@ -50,7 +50,7 @@ EOF;
     return $ret;
   }
 
-  protected function StorePriceSlice($id, $ret)
+  private function StorePriceSlice($id, $ret)
   {
     $prices = [];
     foreach ($ret['prices'] as $price)
@@ -91,7 +91,7 @@ EOF;
     if (!is_numeric($ymid))
       return false;
     $res = db::Query("INSERT INTO spider.tasks(url, realtime) VALUES ($1, true) RETURNING id",
-      ["http://market.yandex.ru/offers.xml?how=aprice&modelid={$ymid}"], true);
+      ["http://market.yandex.ru/offers.xml?grhow=shop&how=aprice&np=1&modelid={$ymid}"], true);
     return true;
   }
 }

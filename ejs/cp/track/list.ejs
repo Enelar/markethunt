@@ -23,7 +23,7 @@ for (var k in this.list)
   <tr>
     <td>
       <%@ v.name %>
-      <a href='http://yandex.market.ru/model.xml?modelid=<%@ v.ymid %>'>
+      <a href='//market.yandex.ru/offers.xml?modelid=<%@ v.ymid %>&grhow=shop&how=aprice&np=1'>
         <i class="external url icon link"></i>
       </a>
     </td>
@@ -68,8 +68,8 @@ for (var k in this.list)
         ) %>
     </td>
     <td>
-      <i class="circle icon"></i>
-      <i class="trash icon"></i>
+      <%= this.DeferRender('cp/track/disable', {}) %>
+      <%= this.DeferRender('cp/track/remove', {}) %>
     </td>
   </tr>
 <%
