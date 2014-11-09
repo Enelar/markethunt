@@ -2,7 +2,7 @@ DirectoryIndex load.html
 
 RewriteEngine on
 
-RewriteRule ^api/$ api/main [L,QSA]
+RewriteRule ^api/$ api/main/home [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

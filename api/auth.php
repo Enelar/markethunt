@@ -4,7 +4,13 @@ class auth extends api
 {
   protected function uid()
   {
-    phoxy_protected_assert($this->is_user_authorized(), ["error" => "Auth required"]);
+    phoxy_protected_assert
+    (
+      $this->is_user_authorized(),
+      [
+        "design" => "auth/index"
+      ]
+    );
     return $this->get_uid();
   }
 
@@ -14,9 +20,11 @@ class auth extends api
       session_start();
     global $_SESSION;
 
-    if(!is_null($id))
+    if (!is_null($id))
       $_SESSION['uid'] = $id;
-    return $_SESSION['uid'];
+    if (isset($_SESSION['uid']))
+      return $_SESSION['uid'];
+    return 0;
   }
 
   public function is_user_authorized()

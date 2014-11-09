@@ -19,7 +19,10 @@ function phoxy_conf()
   $ret = phoxy_default_conf();
   global $_SERVER;
   $ret["ip"] = $_SERVER["HTTP_X_REAL_IP"];
-  $ret["adminip"] = $ret["ip"] == '213.21.7.6';
+  $ret['adminip'] = false;
+  //$ret["adminip"] = $ret["ip"] == '213.21.7.6' && $_SERVER['SERVER_NAME'] != 'ftest.markethunt.ru'; 
+  if (!$ret['adminip'])
+    ini_set('display_errors','Off');
   return $ret;
 }
 

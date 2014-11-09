@@ -11,4 +11,9 @@ class main extends api
       "design" => "main/body",
     ];
   }
+
+  protected function Home()
+  {
+    return LoadModule('api/cp/', 'track', true)->Reserve();
+  }
 }

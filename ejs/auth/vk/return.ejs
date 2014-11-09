@@ -1,0 +1,9 @@
+<%
+if (!window.opener)
+  window.history.go(-3);
+else
+{
+  window.opener.$('.auth.page.dimmer').click();
+  window.close();
+}
+%>

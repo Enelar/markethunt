@@ -29,7 +29,9 @@ class market extends api
         });
       
       res.success = $('.product-tabs').size();
-      res.name = $('h1.title[itemprop="name"]').children().remove().end().text();
+      res.name = $('.title[itemprop="name"]').children().remove().end().text();
+      if (res.name.length == 0)
+        res.name = $('.product-title .title').children().remove().end().text();
       res.ymid = $('table.b-modelinfo').attr('id');
       ret = res;
 EOF;
@@ -69,6 +71,17 @@ EOF;
 
   public function ExtractYMIDFromLink($str)
   {
+    phoxy_protected_assert(
+      strpos($str, "modelid=") > 0,
+      [
+        "data" =>
+        [
+          "error" => "
+Не удалось распознать ссылку на модель.
+(Вы можете нажать на вопрос, для демонстрации)",
+        ]
+      ]);
+
     list($a, $b) = explode("modelid=", $str, 2);
     if (strpos($b, "&") !== false)
       list($id, $garb) = explode("&", $b, 2);

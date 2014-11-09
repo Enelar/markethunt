@@ -1,19 +1,11 @@
-<div class="ui input" style='width: 100%'>
+<div class="ui left icon action input fluid tracker">
   <input type='text' placeholder='Введите ссылку на модель' />
+  <i class="question icon bait"><fictive></i>
+  <div class="ui teal right labeled button">Добавить</div>
 </div>
 
 <%
 var input;
-function TriggerSend()
-{
-  phoxy.ApiRequest('cp/track/Add', [input.val()], function(res)
-  { // Todo: continious update
-    if (res.Add)
-      return phoxy.ApiAnswer({reset: true});
-    // Tooltip temporary
-    return phoxy.Defer(TriggerSend, 400);
-  });
-}
 
 this.first(function()
 {
@@ -24,10 +16,57 @@ this.first(function()
       return;
     TriggerSend();
   })
+  this.find('.button').click(TriggerSend);
+
+  //input.next().hide();
+  input.next()
+    .popup(
+      {
+        content: 'Заполнить тестовыми данными?',
+        variation: 'inverted',
+        delay: 30,
+      }).click(function()
+  {
+    input.val('http://market.yandex.ru/model.xml?modelid=10387597&hid=91491&track=tabs');
+    input.next().fadeOut();
+  });
 });
+
+function TriggerSend()
+{
+  input.prop('disabled', 'true');
+
+  phoxy.ApiRequest('cp/track/Add', [input.val()], function(res)
+  {
+    if (typeof res.data == 'undefined')
+      return;
+    input.prop('disabled', 'false');
+
+    if (typeof res.data.error != 'undefined')
+      return input.next().find('fictive')
+                .popup({
+                  content: res.data.error,
+                  position: 'bottom right',
+                  on: 'click',
+                  variation: 'inverted',
+                }).popup('show');
+
+    if (res.data.Add)
+      return phoxy.ApiAnswer({reset: true});
+
+    input.next().find('fictive')
+      .popup({
+        content: "Модель еще неизвестна системе, пожалуйста подождите. Мы сканируем Yandex.Market. Обычно это занимает 10 секунд",
+        position: 'bottom right',
+        on: 'click',
+        variation: 'inverted',
+      }).popup('show');
+
+    input.prop('disabled', 'true');
+    return phoxy.Defer(TriggerSend, 1000);
+  });
+}
 %>
 
-<div class="ui horizontal divider">
-  <i class="circular heart icon"></i>
-</div>
+<%= this.DeferRender('cp/track/refresh', {}) %>
 <%= this.DeferRender('cp/track/GetList') %>

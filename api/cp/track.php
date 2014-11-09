@@ -23,15 +23,19 @@ class track extends api
 
   private function AddTrack($ymid)
   {
+    $filter = [LoadModule('api', 'auth')->uid(), $ymid];
+    $try = db::Query("SELECT * FROM track.entity WHERE uid=$1 AND ymid=$2", $filter, true);
+    if ($try())
+      return true;
     LoadModule('api/spider', 'market')->AddModel($ymid);
-    $res = db::Query("INSERT INTO track.entity(uid, ymid) VALUES ($1, $2) RETURNING ymid",
-      [LoadModule('api', 'auth')->uid(), $ymid], true);
+    $res = db::Query("INSERT INTO track.entity(uid, ymid) VALUES ($1, $2) RETURNING ymid", $filter, true);
     return $res();
   }
 
   protected function GetList()
   {
-    $res = db::Query("SELECT entity.*, name FROM track.entity, market.models WHERE entity.ymid=models.ymid");
+    $res = db::Query("SELECT entity.*, name FROM track.entity LEFT JOIN market.models ON entity.ymid=models.ymid WHERE uid=$1",
+      [LoadModule('api', 'auth')->get_uid()]);
     return
     [
       "design" => "cp/track/list",

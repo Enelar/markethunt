@@ -36,6 +36,7 @@ class vk extends api
         [
             //"reset" => "/",
             "data" => ["uid" => LoadModule('api', 'auth')->login($res['uid'])],
+            "design" => "auth/vk/return",
         ];
     }
 
