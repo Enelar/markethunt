@@ -1,0 +1,14 @@
+<%
+if ($('#reg-modal').size())
+  $('#reg-modal').modal('show');
+else
+{
+%>
+  <%= this.DeferRender('cp/reg/Modal') %>
+<%
+  this.DeferCascade(function()
+  {
+    $('#reg-modal').modal('show'); 
+  })
+}
+%>

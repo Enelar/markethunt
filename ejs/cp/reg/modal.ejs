@@ -1,0 +1,40 @@
+<%
+debugger;
+%>
+<div class="ui modal" id='reg-modal'>
+  <i class="close icon"></i>
+  <div class="header">
+    Уточните данные
+  </div>
+  <div class="content ui form segment">
+    <div class='field'>
+      <label>Название компании (в точности как на yandex.market, для отслеживания позиций)</label>    
+      <div class='ui input fluid'>
+        <input name='company' placeholder='Например "Юлмарт ulmart.ru"' value='<%@ this.company %>'/>
+      </div>
+    </div>
+    <div class='field'>
+      <label>Почта для уведомлений</label>
+      <div class='ui input fluid'>        
+        <input name='email' placeholder='Например "admin@ulmart.ru"' value='<%@ this.email %>'/>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui button">OK</div>
+  </div>
+</div>
+
+<%
+this.first(function()
+{
+  this.modal();
+  this.find('input').change(function()
+  {
+    phoxy.ApiRequest('cp/reg/UpdateNotifyInfo', [$(this).attr('name'), $(this).val()], function()
+    {
+
+    })
+  });
+})
+%>

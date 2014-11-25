@@ -1,0 +1,24 @@
+<%
+if (this.NotificationEmailKnown)
+{
+%>
+на почту <a><i class="configure icon link"></i></a>
+<%
+}
+else
+{ 
+%>
+<a class='ui red label'>Почта неизвестна <i class="configure icon"></i></a>
+<%
+}
+%>
+
+<%
+this.first(function()
+{
+  this.click(function()
+  {
+    phoxy.ApiRequest('cp/reg/show', {});
+  })
+});
+%>

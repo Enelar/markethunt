@@ -11,6 +11,9 @@
       отправить письмо
     </th>
     <th>
+    <% if (this.list.length) { %>
+      <%= this.DeferRender('cp/notify/NotificationEmailKnown') %>
+    <% } %>
     </th>
   </tr>
 <%

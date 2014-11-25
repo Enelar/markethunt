@@ -24,4 +24,15 @@ class notify extends api
       return ["error" => "Недостаточно прав"];
     db::Query("UPDATE track.warnings SET {$name}=$2 WHERE id=$1", [$id, $value]);
   }
+
+  protected function NotificationEmailKnown()
+  {
+    $res = db::Query("SELECT email FROM users WHERE id=$1", [LoadModule('api', 'auth')->uid()], true);
+
+    return
+    [
+      "design" => "cp/track/email_check",
+      "data" => ["NotificationEmailKnown" => $res->email != null]
+    ];
+  }
 }
