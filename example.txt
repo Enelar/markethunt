@@ -1,0 +1,38 @@
+<?php
+$ymid = 12;
+
+while (1)
+{
+  $res = file_get_content("https://markethunt.ru/api/han/GetChar?id={$ymid}");
+  if (!$res)
+  { // Site unavailable;
+    sleep(1000);
+    continue;
+  }
+  $obj = json_decode($res, true);
+  if (!$obj)
+  { // Data format error (probably internal server error)
+    // mail to developer
+    exit();
+  }
+
+  if (isset($obj['pleasewait']))
+    continue;
+
+  foreach ($obj['data']['model'] as $k => $v)
+    echo "$k is $v";
+}
+
+/*
+CREATE TABLE "public"."NewTable" (
+"ymid" int4 NOT NULL,
+"key" varchar(255) COLLATE "default",
+"value" varchar(255) COLLATE "default",
+CONSTRAINT "chars_pkey" PRIMARY KEY ("ymid")
+)
+WITH (OIDS=FALSE)
+;
+
+ALTER TABLE "public"."NewTable" OWNER TO "postgres";
+
+*/

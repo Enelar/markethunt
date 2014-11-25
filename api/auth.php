@@ -4,6 +4,7 @@ class auth extends api
 {
   protected function uid()
   {
+/*    
     phoxy_protected_assert
     (
       $this->is_user_authorized(),
@@ -11,6 +12,9 @@ class auth extends api
         "design" => "auth/index"
       ]
     );
+*/
+    if (!$this->is_user_authorized())
+      $this->do_oneclick_reg();
     return $this->get_uid();
   }
 
@@ -72,5 +76,10 @@ class auth extends api
       "design" => "auth/store_account",
       "data" => $this->get_forced_uid(),
     ];
+  }
+
+  protected function yea_im_pretty_sure_continue_without_registration()
+  {
+    return $this->do_oneclick_reg();
   }
 }
