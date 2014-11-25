@@ -45,4 +45,29 @@ class grab extends api
       die("Grab failed");
     echo "<img src='data:image/png;base64,{$obj['shot']}' />";
   }
+
+  protected function Capcha()
+  {
+    $obj = $this->DirectRequest("http://market.yandex.ru/offers.xml?how=aprice&page=2&modelid=10495457");
+    if (!isset($obj['shot']))
+      die("Grab failed");
+    echo "<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>";
+    echo "<img src='data:image/png;base64,{$obj['shot']}' />";
+    echo $obj['body'];
+    echo "
+    <script>
+      $('input[type=\"submit\"]').parents('form').attr('action', '/api/spider/grab/SendCapcha');
+    </script>";
+  }
+
+  protected function SendCapcha( $a, $b, $c )
+  {
+    $a = rawurlencode($a);
+    $b = rawurlencode($b);
+    $c = rawurlencode($c);
+  
+    $u = "http://market.yandex.ru/checkcaptcha?";
+    $u .= "key=$a&retpath=$b&rep=$c";
+    echo $this->DirectRequest($u);
+  }
 }

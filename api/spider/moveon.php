@@ -8,7 +8,12 @@ class moveon extends api
     WITH one_row AS
     (
       SELECT * FROM spider.tasks as b
-        WHERE b.lock IS NULL
+        WHERE
+          (
+            b.lock IS NULL
+              OR
+              now() - b.lock > '2 min'::interval
+          )
           AND b.procceed IS NULL
         ORDER BY 
           realtime DESC,
