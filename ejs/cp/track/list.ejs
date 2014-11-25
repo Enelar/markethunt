@@ -22,50 +22,53 @@ for (var k in this.list)
   if (v.name == null)
     v.name = "(Модель сканируется с yandex.market)";
 %>
-  <tr>
+  <tr data-id='<%@ v.id %>'>
     <td>
       <%@ v.name %>
       <a href='//market.yandex.ru/offers.xml?grhow=shop&how=aprice&np=1&modelid=<%@ v.ymid %>'>
         <i class="external url icon link"></i>
       </a>
     </td>
-    <td colspan='2'>
+    <td colspan='2' class='min'>
       <%= 
         this.DeferRender
         (
           'utils/select',
           {
             list: places_array, 
-            name: "name"
+            name: "name",
+            default: v.minplace,
           }
         ) %>
     </td>
-    <td colspan='2'>
+    <td colspan='2' class='max'>
       <%= 
         this.DeferRender
         (
           'utils/select',
           {
             list: places_array, 
-            name: "name"
+            name: "name",
+            default: v.maxplace,
           }
         ) %>
     </td>
-    <td>
+    <td class='freq'>
       <%= 
         this.DeferRender
         (
           'utils/select',
           {
             list: 
-            [
-              "Каждый час",
-              "4 раза в день",
-              "Дважды в день",
-              "Каждый день",
-              "Каждую неделю",
-            ], 
-            name: "name"
+            {
+              '1 hour' : "Каждый час",
+              '6 hour' : "4 раза в день",
+              '12 hour' : "Дважды в день",
+              '1 day' : "Каждый день",
+              '1 week' : "Каждую неделю",
+            }, 
+            name: "name",
+            default: v.every,
           }
         ) %>
     </td>
@@ -78,3 +81,42 @@ for (var k in this.list)
 }
 %>
 </table>
+
+<%
+var url = 'cp/notify/'
+
+var GetId = function(obj)
+{
+  return $(obj).parents('tr').first().attr('data-id');
+}
+
+this.DeferCascade(function()
+{
+  var base = this.first();
+
+  base.find('td.min .selection.dropdown input').change(function()
+  {
+  debugger;
+    phoxy.ApiRequest(url + 'SetMinPosition', [GetId(this), $(this).val()], function()
+    {
+
+    })
+  })
+
+  base.find('td.max .selection.dropdown input').change(function()
+  {
+    phoxy.ApiRequest(url + 'SetMaxPosition', [GetId(this), $(this).val()], function()
+    {
+
+    })
+  })
+
+  base.find('td.freq .selection.dropdown input').change(function()
+  {
+    phoxy.ApiRequest(url + 'SetFrequency', [GetId(this), $(this).val()], function()
+    {
+
+    })
+  })
+})
+%>

@@ -28,13 +28,23 @@ class track extends api
     if ($try())
       return true;
     LoadModule('api/spider', 'market')->AddModel($ymid);
-    $res = db::Query("INSERT INTO track.entity(uid, ymid) VALUES ($1, $2) RETURNING ymid", $filter, true);
-    return $res();
+    $res = db::Query("INSERT INTO track.entity(uid, ymid) VALUES ($1, $2) RETURNING id, ymid", $filter, true);
+
+    if (!$res())
+      return false;
+    db::Query("INSERT INTO track.warnings(id) VALUES ($1)", [$res->id]);
+    return true;
   }
 
   protected function GetList()
   {
-    $res = db::Query("SELECT entity.*, name FROM track.entity LEFT JOIN market.models ON entity.ymid=models.ymid WHERE uid=$1",
+    $res = db::Query("SELECT 
+        entity.*, name, warnings.minplace, warnings.maxplace, warnings.every
+      FROM 
+        track.entity
+        LEFT JOIN market.models ON entity.ymid=models.ymid
+        LEFT JOIN track.warnings ON entity.id=warnings.id
+        WHERE uid=$1",
       [LoadModule('api', 'auth')->get_uid()]);
     return
     [

@@ -1,5 +1,7 @@
 <%
-var first_key = Object.keys(this.list)[0];
+var first_key = this.default;
+if (typeof first_key == 'undefined')
+  first_key = Object.keys(this.list)[0];
 %>
 
 <div class="ui selection dropdown">
@@ -22,6 +24,7 @@ for (var k in this.list)
 <%
 this.first(function()
 {
+  this.find('input').val(first_key);
   this.dropdown();
 })
 %>
