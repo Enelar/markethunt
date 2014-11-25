@@ -101,10 +101,15 @@ EOF;
   {
     if ($this->IsModelKnown($ymid))
       return true;
+    $res = db::Query("INSERT INTO spider.tasks(url, realtime) VALUES ($1, true) RETURNING id",
+      [$this->YMIDLink($ymid)], true);
+    return true;
+  }
+
+  public function YMIDLink($ymid)
+  {
     if (!is_numeric($ymid))
       return false;
-    $res = db::Query("INSERT INTO spider.tasks(url, realtime) VALUES ($1, true) RETURNING id",
-      ["http://market.yandex.ru/offers.xml?grhow=shop&how=aprice&np=1&modelid={$ymid}"], true);
-    return true;
+    return "http://market.yandex.ru/offers.xml?grhow=shop&how=aprice&np=1&modelid={$ymid}";
   }
 }

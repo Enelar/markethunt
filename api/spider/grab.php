@@ -19,7 +19,7 @@ class grab extends api
     return $res;
   }
 
-  protected function Request($url)
+  public function Request($url)
   {
     $obj = $this->DirectRequest($url);
     if (phoxy_conf()["adminip"])
