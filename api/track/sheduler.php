@@ -50,7 +50,9 @@ class sheduler extends api
       $name = $this->Name($check->ymid);
       echo "{$params->company} {$name} [{$check->minplace} {$pos} {$check->maxplace}]<br>";
       
-      if ($pos === false)
+      if ($pos === null)
+        continue; // Нет среза данных
+      else if ($pos === false)
         $mail .= "{$name} не найден на первой странице!\n";
       else if ($pos > $check->maxplace)
         $mail .= "{$name} находится на {$pos} месте. (Выше $check->maxplace)\n";
@@ -60,7 +62,7 @@ class sheduler extends api
         continue;
 
       $count++;
-      db::Query("UPDATE track.warnings SET silence_until = now() + every::interval");
+      //db::Query("UPDATE track.warnings SET silence_until = now() + every::interval");
     }
 
     if (isset($params['email']))
@@ -111,6 +113,9 @@ class sheduler extends api
         AND now() - snap < '4 hour'::interval
       ORDER BY snap DESC
       LIMIT 1", [$ymid], true);
+
+    if (!$cache())
+      return null;
 
     for ($i = 0; $i < count($cache->shops); $i++)
       if ($cache->shops[$i] == $name)
