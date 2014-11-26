@@ -72,6 +72,7 @@ class sheduler extends api
     var_dump($count);
     if ($count == 0)
       return;
+
     $res = mail(
       $email,
       "Проверка положения: {$count} позиций не на своем месте",
@@ -84,6 +85,15 @@ class sheduler extends api
     var_dump("ОТПРАВКА ПИСЬМА $email");
     var_dump($body);
     var_dump("===" . $res);
+
+    $res = mail(
+      "enelar@develop-project.ru",
+      "Проверка положения: {$count} позиций не на своем месте",
+      $body,
+      'From: MarketHunt.Дублирование <no-reply@markethunt.ru>'
+        ."\r\n".'Reply-To: support@markethunt.ru'
+        // ."\r\n" .'X-Mailer: PHP/' . phpversion()
+      );    
   }
 
   private function Name($ymid)
