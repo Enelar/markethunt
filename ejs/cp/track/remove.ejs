@@ -1,1 +1,16 @@
-<i class="trash icon"></i>
+<a><i class="trash icon link"></i></a>
+
+<%
+this.first(function()
+{
+  this.click(function()
+  {
+    var row = $(this).parents('tr').first();
+    var id = row.attr('data-id');
+    phoxy.ApiRequest("cp/track/Remove", [id], function()
+    {
+      row.remove();
+    })
+  })
+})
+%>

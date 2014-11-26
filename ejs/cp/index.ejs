@@ -1,0 +1,7 @@
+<%= this.DeferRender('cp/menu/sidebar', {}) %>
+
+<%
+$('#sidebar').html(this.DeferRender('cp/menu/content', {}))
+%>
+
+<%= this.DeferRender('cp/track/index', this) %>

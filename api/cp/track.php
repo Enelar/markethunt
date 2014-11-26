@@ -6,7 +6,7 @@ class track extends api
   {
     return
     [
-      "design" => "cp/track/index",
+      "design" => "cp/index",
     ];
   }
 
@@ -51,5 +51,11 @@ class track extends api
       "design" => "cp/track/list",
       "data" => ["list" => $res]
     ];
+  }
+
+  protected function Remove($id)
+  {
+    $uid = LoadModule('api', 'auth')->uid();
+    db::Query("DELETE FROM track.entity WHERE id=$1 AND uid=$2", [$id, $uid]);
   }
 }
