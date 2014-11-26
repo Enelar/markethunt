@@ -6,10 +6,13 @@
 
 <%
 var input;
+var popup_base;
 
 this.first(function()
 {
   input = this.find('input');
+  popup_base = input.next();
+
   input.keypress(function(e)
   {
     if (e.which != 13)
@@ -19,7 +22,7 @@ this.first(function()
   this.find('.button').click(TriggerSend);
 
   //input.next().hide();
-  input.next()
+  popup_base
     .popup(
       {
         content: 'Заполнить тестовыми данными?',
@@ -43,10 +46,10 @@ function TriggerSend()
     input.prop('disabled', 'false');
 
     if (typeof res.data.error != 'undefined')
-      return input.next().find('fictive')
+      return popup_base
                 .popup({
                   content: res.data.error,
-                  position: 'bottom right',
+                  position: 'bottom left',
                   on: 'click',
                   variation: 'inverted',
                 }).popup('show');
@@ -54,10 +57,10 @@ function TriggerSend()
     if (res.data.Add)
       return phoxy.ApiAnswer({reset: true});
 
-    input.next().find('fictive')
+    popup_base
       .popup({
         content: "Модель еще неизвестна системе, пожалуйста подождите. Мы сканируем Yandex.Market. Обычно это занимает 10 секунд",
-        position: 'bottom right',
+        position: 'bottom left',
         on: 'click',
         variation: 'inverted',
       }).popup('show');
