@@ -69,7 +69,7 @@ class phantomjs extends api
     $res = db::Query("SELECT img FROM spider.page_cache WHERE id=$1", [$id], true);
     $data = pg_unescape_bytea($res['img']);
 
-    header('Content-Type: image/png');
+    header('Content-Type: image/jpg');
     echo $data;
 
     die();

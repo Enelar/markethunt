@@ -26,10 +26,10 @@ class sheduler extends api
   {
     $checks = db::Query("SELECT 
       *
-      FROM track.warnings, track.entity
+      FROM track.warnings, track.named_entity as entity
       WHERE warnings.id=entity.id
-        AND silence_until < now()
-      ORDER BY uid, entity.id");
+        AND silence_until + '1 hour'::interval < now()
+      ORDER BY uid, name");
 
     foreach ($checks as $check)
     {
@@ -47,7 +47,7 @@ class sheduler extends api
         continue;
 
       $pos = $this->DeterminePosition($params->company, $check->ymid);
-      $name = $this->Name($check->ymid);
+      $name = $check->name;
       echo "{$params->company} {$name} [{$check->minplace} {$pos} {$check->maxplace}]<br>";
       
       if ($pos === null)
@@ -62,7 +62,7 @@ class sheduler extends api
         continue;
 
       $count++;
-      //db::Query("UPDATE track.warnings SET silence_until = now() + every::interval");
+      db::Query("UPDATE track.warnings SET silence_until = now() + every::interval");
     }
 
     if (isset($params['email']))
@@ -117,9 +117,12 @@ class sheduler extends api
     if (!$cache())
       return null;
 
+    $addon = count($cache->shops) == 11;
+
+
     for ($i = 0; $i < count($cache->shops); $i++)
       if ($cache->shops[$i] == $name)
-        return 1 + $i;
+        return $i - $addon;
 
     return false;
   }

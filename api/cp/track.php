@@ -39,12 +39,12 @@ class track extends api
   protected function GetList()
   {
     $res = db::Query("SELECT 
-        entity.*, name, warnings.minplace, warnings.maxplace, warnings.every
+        entity.*, warnings.minplace, warnings.maxplace, warnings.every
       FROM 
-        track.entity
-        LEFT JOIN market.models ON entity.ymid=models.ymid
+        track.named_entity as entity
         LEFT JOIN track.warnings ON entity.id=warnings.id
-        WHERE uid=$1",
+        WHERE uid=$1
+        ORDER BY name",
       [LoadModule('api', 'auth')->get_uid()]);
     return
     [

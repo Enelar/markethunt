@@ -93,7 +93,7 @@ var exportf = function()
 function Exit()
 {
   ret.body = page.content;
-  ret.shot = page.renderBase64('PNG');
+  ret.shot = page.renderBase64('JPEG');
   for (var k in pageResponses)
     ret.headers = {} || pageResponses[k].headers;
   ret.url = url;
