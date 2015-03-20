@@ -14,11 +14,22 @@ include_once('phpsql/wrapper.php');
 include_once('phpsql/db.php');
 db::Bind(new phpsql\utils\wrapper($pg));
 
+function real_ip()
+{
+  global $_SERVER;
+  $words = ['HTTP_CF_CONNECTING_IP', 'HTTP_X_REAL_IP', 'REMOTE_ADDR'];
+
+  foreach ($words as $word)
+    if (isset($_SERVER[$word]))
+      return $_SERVER[$word];
+  die();
+}
+
 function phoxy_conf()
 {
   $ret = phoxy_default_conf();
   global $_SERVER;
-  $ret["ip"] = $_SERVER["HTTP_X_REAL_IP"];
+  $ret["ip"] = real_ip();
   $ret['adminip'] = false;
   //$ret["adminip"] = $ret["ip"] == '213.21.7.6' && $_SERVER['SERVER_NAME'] != 'ftest.markethunt.ru'; 
   if (!$ret['adminip'])
