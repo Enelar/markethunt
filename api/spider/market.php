@@ -72,7 +72,7 @@ EOF;
   public function ExtractYMIDFromLink($str)
   {
     phoxy_protected_assert(
-      strpos($str, "modelid=") > 0,
+      strpos($str, "product/") > 0,
       [
         "data" =>
         [
@@ -82,9 +82,9 @@ EOF;
         ]
       ]);
 
-    list($a, $b) = explode("modelid=", $str, 2);
-    if (strpos($b, "&") !== false)
-      list($id, $garb) = explode("&", $b, 2);
+    list($a, $b) = explode("product/", $str, 2);
+    if (strpos($b, "/") !== false)
+      list($id, $garb) = explode("/", $b, 2);
     else
       $id = $b;
 
