@@ -11,6 +11,7 @@ RewriteRule ^api/(.*)$ rpc.php?api=$1 [L,QSA]
 # This is not right. You should detect 404
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ hotstart.php?url=$1 [QSA]
+RewriteRule ^(.*)$ hotstart.php?url=$1 [L,QSA]
 
+RedirectMatch 403 /secret.yaml
 RedirectMatch 403 /\.git
