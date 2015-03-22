@@ -12,4 +12,9 @@ class request_demo extends api
       "before" => "landing.CleanUp"
     ];
   }
+
+  protected function Submit($array)
+  {
+    var_dump($array);
+  }
 }

@@ -1,0 +1,82 @@
+<div class='leadform'>
+  <table class='ui table'>
+    <tr>
+      <td>
+        <form class="ui form">
+          <h4 class="ui dividing header">Организовать демонстрацию</h4>
+
+          <div class="field">
+            <label>Имя</label>
+            <input type="text" name="name" placeholder="Имя">
+          </div>
+
+          <div class="field">
+            <label>Телефон</label>
+            <input type="text" name="phone" placeholder="+7 (XXX) XXXX-XXX">
+          </div>
+
+          <div class="field">
+            <label>Сайт магазина</label>
+            <input type="text" name="url" placeholder="http://">
+          </div>
+
+          <div class="field">
+            <label>Почта</label>
+            <input type="text" name="email" placeholder="Почта">
+          </div>
+
+          <button class='ui button'>
+            Запуск
+          </button>
+        </form>
+      </td>
+      <td>
+  <h3>Демонстрация</h3>
+
+  <p>
+  Мы заполним за вас 10 моделей, установим нужный вам ценовой диапазон и покажем на деле как это работает.
+  Совершенно бесплатно.
+  </p>
+
+  <h3>О чем вообще речь?</h3>
+
+  <p>
+  При размещении на Яндекс.Маркете приходится учавствовать в борьбе сразу по нескольким параметрам. Вы должны иметь максимальное число звезд, выбирать адекватную стратегию ставок и иметь конкурентную цену. Последним занимаемся мы. MarketHunt до четырех раз в час проверяет вашу позицию при сортировке "по цене", и автоматически занимает необходимое вам место.
+  </p>
+  <p>
+  Система аналитики позволит вам предугадывать движение рынка, а интелектуальные системы оповещения оповестят вас о важных изменениях.
+  </p>
+
+  <h3>Что то не понятно?</h3>
+
+  <p>
+  Звоните, пишите нам. В рабочее время мы готовы ответить на любые вопросы!
+  </p>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<%
+this.first(function()
+{
+  var form = this.find('form');
+  form.find('button').click(function()
+  {
+    var ret = {};
+    form.find('input').each(function()
+    {
+      var name = $(this).attr('name');
+      var val = $(this).val();
+      ret[name] = val;
+    });
+
+    phoxy.ApiRequest(['landing/request_demo/Submit', ret], function()
+    {
+      debugger;
+    });
+
+    return false;
+  })
+})
+%>

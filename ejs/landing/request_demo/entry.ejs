@@ -1,13 +1,61 @@
-<link rel="stylesheet" href="/ejs/landing/request_demo/entry.css">
-
 <div class='landing request_demo'>
-  <div data-tag='header'>
-  Заголовок
+  <div class='ui fixed inverted main large menu' data-tag='header'>
+    <a class="active item">
+      МаркетХант
+    </a>
+    <div class="right menu">
+      <a class="item">
+        Цены
+      </a>
+      <a class="item">
+        Контакты
+      </a>
+    </div>
   </div>
-  <div data-tag='attention'>
-    Картинка
+  <div class='attention'>
+    <div class='center'>
+      <div>
+        <div class='lookatme'>
+          <div class='box'>
+            Опережайте конкурентов
+          </div>
+          <div class='firstaction'>
+            Ставит нужную цену 24/7 без сбоев.
+            <br>
+            <button class='ui button'>
+              Попробовать сейчас!
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div data-tag='content'>
-    Контент
+  <div class='content'>
+    <h2>Основные преимущества:</h2>
+
+    <div class="ui segment second attention">
+      <%= this.DeferRender('landing/request_demo/second_attention', {}) %>
+    </div>
+    <div class="ui segment third attention">
+      <%= this.DeferRender('landing/request_demo/third_attention', {}) %>
+    </div>
+    <h2>Есть сомнения? Мы все сделаем за вас</h2>
+    <%= this.DeferRender('landing/request_demo/lead_form', {}) %>
+
+    <div class='footer'>
+      http://markethunt.ru (c) 2015
+    </div>
   </div>
 </div>
+<link rel="stylesheet" href="/ejs/landing/request_demo/entry.css">
+
+<%
+this.first(function()
+{
+  this.find('button').click(function()
+  {
+    window.scrollTo(0, 4000);
+    __context.first().find('form input').first().focus();
+  })
+})
+%>

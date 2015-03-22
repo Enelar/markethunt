@@ -1,0 +1,151 @@
+.landing.request_demo .ui.inverted.menu {
+  background-color: rgb(45, 62, 80);
+}
+.landing.request_demo table {
+  border: none;
+}
+
+
+.landing.request_demo > .attention {
+  background: #1f8dd6;
+  z-index: 1;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed !important;
+}
+
+.landing.request_demo > .attention .lookatme {
+  width: 50%;
+  font-size: 300%;
+  text-align: center;
+  color: white;
+}
+
+.landing.request_demo > .attention .lookatme .box {
+  border: 3px solid white;
+  border-radius: 5px;
+  padding: 2rem;
+  font-weight: bold;
+}
+
+.landing.request_demo > .attention .lookatme .firstaction {
+  padding-top: 2rem;
+  font-size: 2rem;
+  color: #eee;
+}
+
+.landing.request_demo > .attention .lookatme .firstaction > .button {
+  margin-top: 2rem;
+  font-size: 2rem;
+  color: #1f8dd6;
+  background: white;
+  padding: 1rem 10rem;
+}
+
+.landing.request_demo > .attention .lookatme .firstaction > .button:hover {
+  background: #eee;
+}
+
+.landing.request_demo > .content {
+  position: absolute;
+  top: 82%;
+  width: 100%;
+  min-height: 20%;
+  z-index: 2;
+  background: white;
+  padding-top: 1rem;
+}
+
+.landing.request_demo > .content > h2{
+  text-align: center;
+  color: rgb(52, 73, 94);
+}
+
+.landing.request_demo > .content .ui.segment {
+  box-shadow: none;
+}
+
+.landing.request_demo > .content .second.attention .ui.card {
+  height: 13em;
+  box-shadow: none;
+  font-size: 1.3rem;
+}
+
+.landing.request_demo > .content .second.attention .ui.card .header {
+  color: #1f8dd6;
+  font-size: 1.4rem;
+}
+
+.landing.request_demo > .content .second.attention .ui.card .content {
+  padding: 0;
+}
+
+.landing.request_demo > .content .third.attention {
+  border-radius: 0px;
+  padding: 2rem 7rem;
+  background-color: rgb(45, 62, 80);
+}
+
+.landing.request_demo > .content .third.attention table {
+  background-color: rgb(45, 62, 80);
+}
+
+.landing.request_demo > .content .third.attention img {
+  height: 160px;
+}
+
+.landing.request_demo > .content .third.attention td:last-child {
+  width: 100%;
+  color: white;
+}
+
+.landing.request_demo > .content .third.attention td:last-child h3 {
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.landing.request_demo > .content .third.attention td:last-child p {
+  color: rgb(170, 170, 170);
+  font-size: 1.3rem;
+  line-height: 2rem;
+}
+
+.landing.request_demo > .content .leadform {
+  padding: 0rem 4rem;
+  font-size: 1.1rem;
+}
+
+.landing.request_demo > .content .leadform p {
+  font-size: 1.3rem;
+}
+
+.landing.request_demo > .content .leadform h3 {
+  font-size: 1.5rem;
+}
+
+.landing.request_demo > .content .leadform form > h4 {
+  margin-top: 1rem;
+}
+
+
+.landing.request_demo > .content .leadform table td:first-child  {
+  width: 30%;
+}
+
+.landing.request_demo > .content .leadform .button {
+  background: #1f8dd6;
+  color: white;
+}
+
+.landing.request_demo .footer {
+  background: #111;
+  height: 3rem;
+  color: #767676;
+  text-align: center;
+  padding: 2rem 0rem;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
